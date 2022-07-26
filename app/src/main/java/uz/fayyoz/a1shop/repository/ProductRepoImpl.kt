@@ -23,14 +23,16 @@ class ProductRepoImpl(private val shopService: ShopService) : ProductsRepository
         }
     }
 
-    override  fun getByCategory(id: Int) {
+    override fun getByCategory(id: Int): MutableLiveData<List<Products>> {
         coroutineScope.launch {
             val newsResponse = shopService.getByCategory(id)
             if (newsResponse.isSuccessful) {
                 newsLiveData.postValue(newsResponse.body())
             }
         }
+        return newsLiveData
     }
+
 
     override fun cancelJob() {
         coroutineScope.cancel()
