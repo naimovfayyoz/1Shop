@@ -1,10 +1,11 @@
 package uz.fayyoz.a1shop.ui.category.adapter
 
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import uz.fayyoz.a1shop.Model.Products
+import uz.fayyoz.a1shop.model.Products
 import uz.fayyoz.a1shop.R
 import uz.fayyoz.a1shop.databinding.ItemProductBinding
 import uz.fayyoz.a1shop.getDrawable
@@ -25,6 +26,7 @@ class ProductAdapter : ListAdapter<Products, ProductVH>(ProductsComparator()) {
     }
 
     override fun onBindViewHolder(holder: ProductVH, position: Int) {
+
         holder.onBind(getItem(position), onClickListener ?: {})
 
     }

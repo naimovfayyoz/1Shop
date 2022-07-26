@@ -1,4 +1,4 @@
-package uz.fayyoz.a1shop.Model
+package uz.fayyoz.a1shop.model
 
 data class Products(
     val category: Category,

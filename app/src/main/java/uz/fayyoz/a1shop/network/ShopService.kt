@@ -1,12 +1,11 @@
 package uz.fayyoz.a1shop.network
 
-import androidx.paging.PagingData
-import kotlinx.coroutines.flow.Flow
+import android.provider.ContactsContract
 import retrofit2.Response
-import retrofit2.http.GET
-import retrofit2.http.Path
-import retrofit2.http.Query
-import uz.fayyoz.a1shop.Model.Products
+import retrofit2.http.*
+import uz.fayyoz.a1shop.model.Products
+import uz.fayyoz.a1shop.model.Token
+import uz.fayyoz.a1shop.model.User
 
 interface ShopService {
 
@@ -16,7 +15,12 @@ interface ShopService {
     @GET("categories/{categoryID}/products")
     suspend fun getByCategory(@Path("categoryID") id: Int): Response<List<Products>>
 
-
+    @POST("auth/login")
+    @FormUrlEncoded
+    suspend fun login(
+        @Field("email") email: String,
+        @Field("password") password: String,
+    ): Response<Token>
 //    @GET("categories/{categoryID}/products")
 //    suspend fun getBy(@Path("categdoryID") id: Int): Flow<PagingData<Products>>
 
