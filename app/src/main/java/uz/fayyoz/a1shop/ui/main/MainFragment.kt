@@ -2,6 +2,9 @@ package uz.fayyoz.a1shop.ui.main
 
 import android.os.Bundle
 import android.view.View
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.tabs.TabLayoutMediator
 import uz.fayyoz.a1shop.R
 import uz.fayyoz.a1shop.databinding.MainFragmentBinding
@@ -18,7 +21,6 @@ class MainFragment : BaseFragment<MainFragmentBinding>(R.layout.main_fragment) {
         setUpTabLayout()
 
     }
-
     private fun setUpTabLayout() {
         val title = arrayOf("Clothes", "Electronics", "Furniture", "Shoes", "Others")
         binding.apply {
@@ -28,5 +30,4 @@ class MainFragment : BaseFragment<MainFragmentBinding>(R.layout.main_fragment) {
             }.attach()
         }
     }
-
 }

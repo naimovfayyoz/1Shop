@@ -1,6 +1,6 @@
 package uz.fayyoz.a1shop.ui.category.adapter
 
-import android.util.Log
+import android.annotation.SuppressLint
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
@@ -8,9 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import uz.fayyoz.a1shop.model.Products
 import uz.fayyoz.a1shop.R
 import uz.fayyoz.a1shop.databinding.ItemProductBinding
-import uz.fayyoz.a1shop.getDrawable
-import uz.fayyoz.a1shop.inflate
-import uz.fayyoz.a1shop.setImageRemote
+import uz.fayyoz.a1shop.utill.getDrawable
+import uz.fayyoz.a1shop.utill.inflate
+import uz.fayyoz.a1shop.utill.setImageRemote
 import uz.fayyoz.a1shop.utill.ProductsComparator
 
 class ProductAdapter : ListAdapter<Products, ProductVH>(ProductsComparator()) {
@@ -36,6 +36,7 @@ class ProductVH(view: View) : RecyclerView.ViewHolder(view) {
     private val binding = ItemProductBinding.bind(view)
     private val errImg = getDrawable(view.context, R.drawable.error_image)
 
+    @SuppressLint("SetTextI18n")
     fun onBind(
         products: Products,
         onClick: (Products) -> Unit,

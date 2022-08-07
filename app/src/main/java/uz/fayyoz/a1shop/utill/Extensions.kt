@@ -1,6 +1,8 @@
-package uz.fayyoz.a1shop
+package uz.fayyoz.a1shop.utill
 
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.util.Log
 import android.view.LayoutInflater
@@ -84,13 +86,29 @@ fun Any.log(text: String) {
 }
 
 fun View.showSnackbar(text: String) {
-    Snackbar.make(this, text, Snackbar.LENGTH_SHORT).setAnimationMode(Snackbar.ANIMATION_MODE_SLIDE).show()
+    Snackbar.make(this, text, Snackbar.LENGTH_SHORT).setAnimationMode(Snackbar.ANIMATION_MODE_SLIDE)
+        .show()
 }
 
 /**
  * Extra Functions
  */
 
+fun <A : Activity> Activity.startNewActivity(activity: Class<A>) {
+    Intent(this, activity).also {
+        it.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+        startActivity(it)
+    }
+}
+
+fun View.visible(isVisible: Boolean) {
+    visibility = if (isVisible) View.VISIBLE else View.GONE
+}
+
+fun View.enable(enabled: Boolean) {
+    isEnabled = enabled
+    alpha = if (enabled) 1f else 0.5f
+}
 
 fun getDrawable(context: Context, @DrawableRes res: Int): Drawable? {
     return ContextCompat.getDrawable(context, res)

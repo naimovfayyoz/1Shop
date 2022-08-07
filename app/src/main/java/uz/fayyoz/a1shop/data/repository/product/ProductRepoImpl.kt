@@ -1,4 +1,4 @@
-package uz.fayyoz.a1shop.repository
+package uz.fayyoz.a1shop.data.repository.product
 
 import androidx.lifecycle.MutableLiveData
 import kotlinx.coroutines.CoroutineScope
@@ -6,7 +6,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import uz.fayyoz.a1shop.model.Products
-import uz.fayyoz.a1shop.model.User
 import uz.fayyoz.a1shop.network.ShopService
 import uz.fayyoz.a1shop.utill.BaseNetworkRepo
 
@@ -14,7 +13,8 @@ class ProductRepoImpl(private val shopService: ShopService) : ProductsRepository
     BaseNetworkRepo() {
 
     private val coroutineScope = CoroutineScope(Dispatchers.IO)
-    val newsLiveData: MutableLiveData<List<Products>> = MutableLiveData()
+    val productsLiveData: MutableLiveData<List<Products>> = MutableLiveData()
+//@TODO set getter
 
 //    override suspend fun getProducts() {
 //        coroutineScope.launch {
@@ -25,17 +25,14 @@ class ProductRepoImpl(private val shopService: ShopService) : ProductsRepository
 //        }
 //    }
 
-    override suspend fun login(email: String, password: String) = safeApiCall {
-        shopService.login(email, password)
-    }
     override fun getByCategory(id: Int): MutableLiveData<List<Products>> {
         coroutineScope.launch {
-            val newsResponse = shopService.getByCategory(id)
-            if (newsResponse.isSuccessful) {
-                newsLiveData.postValue(newsResponse.body())
+            val productsResponse = shopService.getByCategory(id)
+            if (productsResponse.isSuccessful) {
+                productsLiveData.postValue(productsResponse.body())
             }
         }
-        return newsLiveData
+        return productsLiveData
     }
 
 //    override fun createUser() {
