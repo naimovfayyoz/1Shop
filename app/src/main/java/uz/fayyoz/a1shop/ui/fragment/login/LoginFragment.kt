@@ -1,4 +1,4 @@
-package uz.fayyoz.a1shop.ui.login
+package uz.fayyoz.a1shop.ui.fragment.login
 
 import android.os.Bundle
 import android.util.Patterns
@@ -10,7 +10,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import uz.fayyoz.a1shop.R
 import uz.fayyoz.a1shop.databinding.LoginFragmentBinding
-import uz.fayyoz.a1shop.ui.BaseFragment
+import uz.fayyoz.a1shop.ui.fragment.login.vm.LoginVM
+import uz.fayyoz.a1shop.ui.fragment.BaseFragment
 import uz.fayyoz.a1shop.utill.*
 
 

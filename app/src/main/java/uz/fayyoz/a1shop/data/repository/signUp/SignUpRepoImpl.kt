@@ -3,7 +3,7 @@ package uz.fayyoz.a1shop.data.repository.signUp
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import uz.fayyoz.a1shop.model.User
-import uz.fayyoz.a1shop.network.ShopService
+import uz.fayyoz.a1shop.data.remote.ShopService
 
 class SignUpRepoImpl(private val shopService: ShopService) : SignUpRepository {
 

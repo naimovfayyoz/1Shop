@@ -1,7 +1,7 @@
 package uz.fayyoz.a1shop.data.repository.login
 
 import uz.fayyoz.a1shop.data.local.pref.UserPref
-import uz.fayyoz.a1shop.network.ShopService
+import uz.fayyoz.a1shop.data.remote.ShopService
 
 class LoginRepoImpl (
     private val shopService: ShopService,

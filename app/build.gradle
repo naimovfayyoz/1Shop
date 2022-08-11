@@ -13,7 +13,11 @@ android {
         targetSdk 32
         versionCode 1
         versionName "1.0"
-
+        kapt {
+            arguments {
+                arg("room.schemaLocation", "$projectDir/schemas")
+            }
+        }
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildFeatures {
@@ -35,6 +39,14 @@ android {
 }
 
 dependencies {
+    def room_version = "2.4.3"
+
+    implementation "androidx.room:room-ktx:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+
+
+    def lifecycle_version = "2.6.0-alpha01"
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
 
     //Paging3
     def paging_version = "3.1.1"
@@ -64,6 +76,9 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.5.1"
 
     implementation "com.airbnb.android:lottie:3.4.0"
+
+    implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.0.1"
+
 
     implementation 'androidx.core:core-ktx:1.8.0'
     implementation 'androidx.appcompat:appcompat:1.4.2'

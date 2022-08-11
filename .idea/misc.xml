@@ -16,10 +16,11 @@
         <entry key="..\:/Users/fayyo/AndroidStudioProjects/1Shop/app/src/main/res/layout/auth_activity.xml" value="0.18958333333333333" />
         <entry key="..\:/Users/fayyo/AndroidStudioProjects/1Shop/app/src/main/res/layout/category_fragment.xml" value="0.10128205128205128" />
         <entry key="..\:/Users/fayyo/AndroidStudioProjects/1Shop/app/src/main/res/layout/item_product.xml" value="0.5" />
-        <entry key="..\:/Users/fayyo/AndroidStudioProjects/1Shop/app/src/main/res/layout/login_fragment.xml" value="0.18" />
+        <entry key="..\:/Users/fayyo/AndroidStudioProjects/1Shop/app/src/main/res/layout/login_fragment.xml" value="0.1" />
         <entry key="..\:/Users/fayyo/AndroidStudioProjects/1Shop/app/src/main/res/layout/main_fragment.xml" value="0.1" />
         <entry key="..\:/Users/fayyo/AndroidStudioProjects/1Shop/app/src/main/res/layout/register_fragment.xml" value="0.24298282362798493" />
-        <entry key="..\:/Users/fayyo/AndroidStudioProjects/1Shop/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.1" />
+        <entry key="..\:/Users/fayyo/AndroidStudioProjects/1Shop/app/src/main/res/layout/signup_fragment.xml" value="0.1" />
+        <entry key="..\:/Users/fayyo/AndroidStudioProjects/1Shop/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.25" />
         <entry key="..\:/Users/fayyo/AndroidStudioProjects/1Shop/app/src/main/res/xml/provider_paths.xml" value="0.18854166666666666" />
       </map>
     </option>

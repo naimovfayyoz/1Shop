@@ -1,4 +1,4 @@
-package uz.fayyoz.a1shop.ui.category
+package uz.fayyoz.a1shop.ui.fragment.category
 
 import android.os.Bundle
 import android.view.View
@@ -7,9 +7,9 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import uz.fayyoz.a1shop.R
 import uz.fayyoz.a1shop.databinding.CategoryFragmentBinding
-import uz.fayyoz.a1shop.ui.BaseFragment
-import uz.fayyoz.a1shop.ui.category.adapter.ProductAdapter
-import uz.fayyoz.a1shop.ui.category.vm.CategoryVM
+import uz.fayyoz.a1shop.ui.fragment.BaseFragment
+import uz.fayyoz.a1shop.ui.fragment.category.adapter.ProductAdapter
+import uz.fayyoz.a1shop.ui.fragment.category.vm.CategoryVM
 import uz.fayyoz.a1shop.utill.ViewModelFactory
 
 class CategoryFragment() : BaseFragment<CategoryFragmentBinding>(R.layout.category_fragment) {
@@ -38,7 +38,6 @@ class CategoryFragment() : BaseFragment<CategoryFragmentBinding>(R.layout.catego
     }
 
     companion object {
-
         var POSITION_ARG = "position_arg"
         @JvmStatic
         fun newInstance(position: Int) = CategoryFragment().apply {

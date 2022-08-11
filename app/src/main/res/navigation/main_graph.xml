@@ -6,11 +6,11 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="uz.fayyoz.a1shop.ui.main.MainFragment"
+        android:name="uz.fayyoz.a1shop.ui.fragment.main.MainFragment"
         android:label="MainFragment"/>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="uz.fayyoz.a1shop.ui.login.LoginFragment"
+        android:name="uz.fayyoz.a1shop.ui.fragment.login.LoginFragment"
         android:label="LoginFragment">
         <action
             android:id="@+id/action_loginFragment_to_signUpFragment"
@@ -21,7 +21,7 @@
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
-        android:name="uz.fayyoz.a1shop.ui.signUp.SignUpFragment"
+        android:name="uz.fayyoz.a1shop.ui.fragment.signUp.SignUpFragment"
         android:label="SignUpFragment" >
         <action
             android:id="@+id/action_signUpFragment_to_loginFragment"

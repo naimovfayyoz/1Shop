@@ -1,4 +1,4 @@
-package uz.fayyoz.a1shop.ui
+package uz.fayyoz.a1shop.ui.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.viewbinding.ViewBinding
+import uz.fayyoz.a1shop.utill.network.Variables
 
 abstract class BaseFragment<T : ViewBinding>(@LayoutRes private val layout: Int) : Fragment(
 
@@ -29,21 +31,21 @@ abstract class BaseFragment<T : ViewBinding>(@LayoutRes private val layout: Int)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //  subscribeObservers()
+        subscribeObservers()
     }
 
     abstract fun initViewBinding(view: View): T
 
-//    open fun subscribeObservers() {
-//        Variables.isNetworkConnected.observe(viewLifecycleOwner, Observer {event->
-//            event.getContentIfNotHandled()?.let { isNetworkAvailable->
-//                if (isNetworkAvailable && isFirstNetworkCheck)
-//                    onNetworkAvailable()
-//                else
-//                    onNetworkLost()
-//            }
-//        })
-//    }
+    open fun subscribeObservers() {
+        Variables.isNetworkConnected.observe(viewLifecycleOwner, Observer { event ->
+            event.getContentIfNotHandled()?.let { isNetworkAvailable ->
+                if (isNetworkAvailable && isFirstNetworkCheck)
+                    onNetworkAvailable()
+                else
+                    onNetworkLost()
+            }
+        })
+    }
 
     open fun onNetworkAvailable() {}
 

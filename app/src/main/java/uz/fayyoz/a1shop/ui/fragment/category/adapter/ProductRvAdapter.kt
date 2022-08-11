@@ -1,4 +1,4 @@
-package uz.fayyoz.a1shop.ui.category.adapter
+package uz.fayyoz.a1shop.ui.fragment.category.adapter
 
 import android.annotation.SuppressLint
 import android.view.View

@@ -7,9 +7,9 @@ import uz.fayyoz.a1shop.domain.GetByCategoryUseCase
 import uz.fayyoz.a1shop.domain.LoginUseCase
 import uz.fayyoz.a1shop.domain.SaveAccessTokenUseCase
 import uz.fayyoz.a1shop.domain.SignUpUseCase
-import uz.fayyoz.a1shop.ui.category.vm.CategoryVM
-import uz.fayyoz.a1shop.ui.login.LoginVM
-import uz.fayyoz.a1shop.ui.signUp.SignUpVM
+import uz.fayyoz.a1shop.ui.fragment.category.vm.CategoryVM
+import uz.fayyoz.a1shop.ui.fragment.login.vm.LoginVM
+import uz.fayyoz.a1shop.ui.fragment.signUp.vm.SignUpVM
 
 class ViewModelFactory : ViewModelProvider.Factory {
 

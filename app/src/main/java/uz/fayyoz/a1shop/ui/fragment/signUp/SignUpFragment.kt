@@ -1,6 +1,5 @@
-package uz.fayyoz.a1shop.ui.signUp
+package uz.fayyoz.a1shop.ui.fragment.signUp
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
 import android.view.View
@@ -9,7 +8,8 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import uz.fayyoz.a1shop.R
 import uz.fayyoz.a1shop.databinding.SignupFragmentBinding
-import uz.fayyoz.a1shop.ui.BaseFragment
+import uz.fayyoz.a1shop.ui.fragment.signUp.vm.SignUpVM
+import uz.fayyoz.a1shop.ui.fragment.BaseFragment
 import uz.fayyoz.a1shop.utill.ViewModelFactory
 import uz.fayyoz.a1shop.utill.enable
 import uz.fayyoz.a1shop.utill.visible
@@ -42,7 +42,7 @@ class SignUpFragment : BaseFragment<SignupFragmentBinding>(R.layout.signup_fragm
                     && name.isNotEmpty())
         }
 
-        binding.btnLogRegister.setOnClickListener()
+        binding.tvRegister.setOnClickListener()
         {
             findNavController().navigate(R.id.action_signUpFragment_to_loginFragment)
         }

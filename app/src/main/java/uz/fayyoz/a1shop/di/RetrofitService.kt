@@ -7,7 +7,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import uz.fayyoz.a1shop.BuildConfig
-import uz.fayyoz.a1shop.network.ShopService
+import uz.fayyoz.a1shop.data.remote.ShopService
 import java.util.concurrent.TimeUnit
 
 object RetrofitService {

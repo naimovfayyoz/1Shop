@@ -1,4 +1,4 @@
-package uz.fayyoz.a1shop.ui.signUp
+package uz.fayyoz.a1shop.ui.fragment.signUp.vm
 
 import android.util.Log
 import androidx.lifecycle.LiveData

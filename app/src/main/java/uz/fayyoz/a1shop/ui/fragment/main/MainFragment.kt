@@ -1,15 +1,12 @@
-package uz.fayyoz.a1shop.ui.main
+package uz.fayyoz.a1shop.ui.fragment.main
 
 import android.os.Bundle
 import android.view.View
-import androidx.navigation.NavController
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.tabs.TabLayoutMediator
 import uz.fayyoz.a1shop.R
 import uz.fayyoz.a1shop.databinding.MainFragmentBinding
-import uz.fayyoz.a1shop.ui.BaseFragment
-import uz.fayyoz.a1shop.ui.main.adapter.PagerAdapter
+import uz.fayyoz.a1shop.ui.fragment.BaseFragment
+import uz.fayyoz.a1shop.ui.fragment.main.adapter.PagerAdapter
 
 class MainFragment : BaseFragment<MainFragmentBinding>(R.layout.main_fragment) {
 

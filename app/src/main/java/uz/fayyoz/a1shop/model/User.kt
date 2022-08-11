@@ -1,10 +1,14 @@
 package uz.fayyoz.a1shop.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 import retrofit2.http.Field
 
+@Entity(tableName = "User")
 data class User(
+    @PrimaryKey
     @SerializedName("id")
     @Expose
     val id: Int,
