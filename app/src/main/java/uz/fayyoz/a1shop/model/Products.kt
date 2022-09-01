@@ -8,6 +8,7 @@ import androidx.room.PrimaryKey
 data class Products(
     @PrimaryKey
     val id:Int,
+    val category: Int,
     val description: String,
     val image: String,
     val images: List<String>,

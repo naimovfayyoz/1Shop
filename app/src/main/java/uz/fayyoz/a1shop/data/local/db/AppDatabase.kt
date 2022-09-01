@@ -16,6 +16,8 @@ import uz.fayyoz.a1shop.utill.ListTypeConverter
 @kotlinx.serialization.ExperimentalSerializationApi
 abstract class AppDatabase : RoomDatabase() {
 
+    abstract fun productsDao(): ProductsDao
+
     companion object {
         private var instance: AppDatabase? = null
         fun getDatabaseInstance(context: Context): AppDatabase {

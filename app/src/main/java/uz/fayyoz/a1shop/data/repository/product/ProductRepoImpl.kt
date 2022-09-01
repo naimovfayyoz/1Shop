@@ -1,38 +1,26 @@
 package uz.fayyoz.a1shop.data.repository.product
 
-import kotlinx.coroutines.flow.Flow
+import retrofit2.Response
 import uz.fayyoz.a1shop.data.local.db.ProductsDao
 import uz.fayyoz.a1shop.data.remote.ShopService
-import uz.fayyoz.a1shop.model.Products
 import uz.fayyoz.a1shop.utill.BaseNetworkRepo
-import uz.fayyoz.a1shop.utill.NetworkBoundResource
-import uz.fayyoz.a1shop.utill.Resource
+import uz.fayyoz.a1shop.utill.networkBoundResource
 
 class ProductRepoImpl(
     private val shopService: ShopService,
     private val productsDao: ProductsDao,
 ) : ProductsRepository,
     BaseNetworkRepo() {
-
-    override suspend fun getByCategory(id: Int)= object : NetworkBoundResource<List<Products>, List<Products>>()
-    {
-        override fun fetchFromLocal(): Flow<List<Products>> {
-return productsDao.getProductsById(id)       }
-
-        override fun fetchFromRemote(): Flow<Resource<List<Products>>> {
-            TODO("Not yet implemented")
+    override fun getByCategory(id: Int) = networkBoundResource(
+        query = { productsDao.getProductsByCategory(id) },
+        fetch = {
+            shopService.getByCategory(id)
+        },
+        saveFetchResult = {
+            productsDao.deleteAllProducts()
+            productsDao.saveProducts(it)
         }
-
-        override suspend fun saveRemoteData(data: List<Products>) {
-            TODO("Not yet implemented")
-        }
-
-        override fun shouldFetchFromRemote(data: List<Products>): Boolean {
-            TODO("Not yet implemented")
-        }
-
-    }
-
+    )
 
 }
 

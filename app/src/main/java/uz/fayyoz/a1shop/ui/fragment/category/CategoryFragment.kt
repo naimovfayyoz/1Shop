@@ -11,6 +11,7 @@ import uz.fayyoz.a1shop.ui.fragment.BaseFragment
 import uz.fayyoz.a1shop.ui.fragment.category.adapter.ProductAdapter
 import uz.fayyoz.a1shop.ui.fragment.category.vm.CategoryVM
 import uz.fayyoz.a1shop.utill.ViewModelFactory
+import uz.fayyoz.a1shop.utill.log
 
 class CategoryFragment() : BaseFragment<CategoryFragmentBinding>(R.layout.category_fragment) {
 
@@ -24,7 +25,8 @@ class CategoryFragment() : BaseFragment<CategoryFragmentBinding>(R.layout.catego
 
         val position = arguments?.getInt(POSITION_ARG)
         productVM.getByCategory(position!!).observe(viewLifecycleOwner) {
-            productsAdapter.submitList(it)
+            log(""+it.data)
+            productsAdapter.submitList(it.data)
         }
         setUpRv()
     }

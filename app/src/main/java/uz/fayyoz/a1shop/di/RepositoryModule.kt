@@ -1,5 +1,6 @@
 package uz.fayyoz.a1shop.di
 
+import uz.fayyoz.a1shop.data.local.db.AppDatabase
 import uz.fayyoz.a1shop.data.local.pref.UserPref
 import uz.fayyoz.a1shop.data.repository.login.LoginRepoImpl
 import uz.fayyoz.a1shop.data.repository.login.LoginRepository
@@ -12,7 +13,8 @@ import uz.fayyoz.a1shop.utill.App
 object RepositoryModule {
 
     fun bindProductsRepo(): ProductsRepository = ProductRepoImpl(
-        RetrofitService.shopService
+        RetrofitService.shopService,
+        DatabaseModule.provideProductsDao()
     )
 
     fun bindLoginRepo(): LoginRepository = LoginRepoImpl(
@@ -20,7 +22,7 @@ object RepositoryModule {
         UserPref(App.appInstance)
     )
 
-    fun bindSignUpRepo():SignUpRepository=SignUpRepoImpl(
+    fun bindSignUpRepo(): SignUpRepository = SignUpRepoImpl(
         RetrofitService.shopService
     )
 }

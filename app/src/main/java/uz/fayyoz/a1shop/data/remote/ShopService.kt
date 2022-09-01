@@ -9,10 +9,10 @@ import uz.fayyoz.a1shop.model.User
 interface ShopService {
 
     @GET("products")
-    suspend fun getAllProducts(): Response<List<Products>>
+    suspend fun getAllProducts(): List<Products>
 
     @GET("categories/{categoryID}/products")
-    suspend fun getByCategory(@Path("categoryID") id: Int): Response<List<Products>>
+    suspend fun getByCategory(@Path("categoryID") id: Int): List<Products>
 
     @POST("auth/login")
     @FormUrlEncoded

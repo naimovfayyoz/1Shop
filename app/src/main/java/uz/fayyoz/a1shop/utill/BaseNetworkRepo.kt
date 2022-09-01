@@ -16,10 +16,10 @@ abstract class BaseNetworkRepo {
             } catch (throwable: Throwable) {
                 when (throwable) {
                     is HttpException -> {
-                        Resource.Error(throwable.message(), throwable.code())
+                        Resource.Error(throwable, throwable.code())
                     }
                     else -> {
-                        Resource.Error("UNKNOWN ERROR", null)
+                        Resource.Error(throwable, null)
                     }
                 }
             } as Resource<T>

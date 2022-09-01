@@ -4,7 +4,7 @@ import uz.fayyoz.a1shop.data.repository.product.ProductsRepository
 
 class GetByCategoryUseCase(private val repository: ProductsRepository) {
 
-    suspend fun execute(
+     fun execute(
         id: Int,
     ) = repository.getByCategory(id)
 }

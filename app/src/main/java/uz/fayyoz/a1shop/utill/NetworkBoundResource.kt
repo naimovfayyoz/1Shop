@@ -1,59 +1,31 @@
 package uz.fayyoz.a1shop.utill
 
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.*
 
-/**
- * Util class to manage caching and remote request
- */
-abstract class NetworkBoundResource<DB, REMOTE> {
 
-    abstract fun fetchFromLocal(): Flow<DB>
+inline fun <DB, REMOTE> networkBoundResource(
+    crossinline  query: () -> Flow<DB>,
+    crossinline  fetch: suspend () -> REMOTE,
+    crossinline  saveFetchResult: suspend (REMOTE) -> Unit,
+    crossinline  shouldFetch: (DB) -> Boolean = { true },
+) = flow {
 
-    abstract fun fetchFromRemote(): Flow<Resource<REMOTE>>
+    val data = query().first() // collection 1 time
 
-    abstract suspend fun saveRemoteData(data: REMOTE)
+    val flow = if (shouldFetch(data)) {
+        log("Fetching from remote")
+        emit(Resource.Loading(data))
 
-    abstract fun shouldFetchFromRemote(data: DB): Boolean
-
-    @ExperimentalCoroutinesApi
-    fun asFlow() = flow<Resource<DB>> {
-
-        val localeData = fetchFromLocal().first()
-
-        if (shouldFetchFromRemote(localeData)) {
-            log("Fetching from remote")
-            fetchFromRemote()
-                .collect { response ->
-                    when (response) {
-
-                        is Resource.Loading -> {
-                            emit(Resource.Loading())
-                        }
-
-                        is Resource.Success -> {
-                            val data = response.data!!
-                            saveRemoteData(data)
-                            emitLocalDbData()
-                        }
-
-                        is Resource.Error -> {
-                            emit(Resource.Error(response.message.toString()))
-                        }
-                        is Resource.InitialState -> {}
-                    }
-                }
-        } else {
-            emitLocalDbData()
+        try {
+            saveFetchResult(fetch())
+            query().map { Resource.Success(it) }
+        } catch (throwable: Throwable) {
+            query().map { Resource.Error(throwable, it) }
         }
+    } else {
+        log("emitLocalDB")
+        query().map { Resource.Success(it) }
     }
 
-    @ExperimentalCoroutinesApi
-    private suspend fun FlowCollector<Resource<DB>>.emitLocalDbData() {
-        emit(Resource.Loading())
-        log("emitLocalDB")
-        emitAll(fetchFromLocal().map { dbData ->
-            Resource.Success(dbData)
-        })
-    }
+    emitAll(flow)
 }
